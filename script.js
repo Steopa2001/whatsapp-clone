@@ -18,29 +18,15 @@ const messages = [
 ];
 
 //Operazioni di Avvio Pagina
-showMessages()
+showMessages();
 
 //Operazioni di interazione con l'utente
-button.addEventListener("click", function () {
-  //Recupero il testo inserito dall'utente
-  const insertedText = input.value.trim();
-  //Svuoto la casella di testo
-  input.value = "";
-  //Riporto il cursone sulla casella
-  input.focus();
+button.addEventListener("click", sendMessage);
 
-  //Se non c'è testo, annullo tutto
-  if (insertedText === "") return;
-
-  addMessage('sent', insertedText)
-
-    //Svuoto la casella di testo
-  input.value = "";
-  //Riporto il cursone sulla casella
-  input.focus();
-
-
-
+//Alla pressione del tasto invio
+input.addEventListener("keydown", function (event) {
+    //Controllo se il tasto cliccato è 'Invio'
+    if(event.key === 'Enter') sendMessage()
 });
 
 //FUNZIONI UTILI
@@ -63,8 +49,8 @@ function showMessages() {
 }
 
 //Funzione per aggiungere un messaggio
-function addMessage (messageType, messageText) {
-      //Creo un nuovo messaggio
+function addMessage(messageType, messageText) {
+  //Creo un nuovo messaggio
   const newMessage = {
     type: messageType,
     text: messageText,
@@ -74,5 +60,24 @@ function addMessage (messageType, messageText) {
   //Aggiungo il messaggio nuovo alla lista dei messaggi
   messages.push(newMessage);
 
- showMessages()
+  showMessages();
+}
+
+//Funzione per inviare un messaggio
+function sendMessage() {
+  //Recupero il testo inserito dall'utente
+  const insertedText = input.value.trim();
+
+  //Se non c'è testo, annullo tutto
+  if (insertedText === "") return;
+
+  addMessage("sent", insertedText);
+
+  //Svuoto la casella di testo
+  input.value = "";
+  //Riporto il cursone sulla casella
+  input.focus();
+
+  //Scorro in automatico alla fine del box
+  chatBox.scrollTop = chatBox.scrollHeight;
 }

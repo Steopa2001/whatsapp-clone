@@ -54,10 +54,12 @@ header-right {
 
 .chat-row.sent {
   justify-content: flex-end;
+  padding-left: 32px;
 }
 
 .chat-row.received {
   justify-content: flex-start;
+  padding-right: 32px;
 }
 
 .chat-message {
@@ -65,6 +67,8 @@ header-right {
   padding: 8px;
   border-radius: 8px;
   box-shadow: 3px 3px 10px #00000080;
+  word-break: break-word; 
+  max-width: 70vw;  
 }
 
 .chat-row.sent > .chat-message {
