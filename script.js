@@ -34,6 +34,12 @@ button.addEventListener("click", function () {
 
   addMessage('sent', insertedText)
 
+    //Svuoto la casella di testo
+  input.value = "";
+  //Riporto il cursone sulla casella
+  input.focus();
+
+
 
 });
 
