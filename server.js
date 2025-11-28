@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+app.use(express.static("."));
+
 app.post("/api/chat", async (req, res) => {
   try {
     const userMessages = req.body.messages; // array di messaggi (testo)
@@ -52,8 +54,6 @@ app.post("/api/chat", async (req, res) => {
   }
 });
 
-// facoltativo: servire i file statici
-app.use(express.static("."));
 
 app.listen(PORT, () => {
   console.log(`Server in ascolto su http://localhost:${PORT}`);
