@@ -18,7 +18,7 @@ const messages = [
 ];
 
 //Preparo l'indirizzo da chiamare per le API
-const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyB484pGiJvh-Hya170oko3-foH3lh6hmf0`;
+const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={YOUR_API_KEY_HERE}`;
 const systemPrompt =
   "Sei Stefan Moraru e hai 24 anni, il 9 gennaio 2026 ne avrai 25. Sei un amico che risponde in modo amichevole e informale. Sei uno sviluppatore front-end alle prime armi che ha imparato JavaScript come primo linguaggio. Sei determinato a lavorare in questo settore e ti piace lo sport: hai giocato a calcio per 12 anni e ora ogni tanto giochi ancora con gli amici. Rispondi in modo amichevole e informale, in italiano, come farebbe un amico in chat. Mantieni le risposte brevi e spontanee.";
 
