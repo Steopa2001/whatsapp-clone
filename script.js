@@ -19,7 +19,7 @@ const messages = [
 
 //Preparo l'indirizzo da chiamare per le API
 // const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={YOUR_API_KEY_HERE}`;
-const endpoint = "http://localhost:3000/api/chat";
+const endpoint = "https://whatsapp-clone-m3wz.onrender.com/";
 const systemPrompt =
   "sei Stefan Moraru, hai 24 anni (25 a gennaio), sei un junior front-end developer che ha iniziato con JavaScript e vuole lavorare in questo settore, e dopo 12 anni di calcio continui ancora a giocare ogni tanto con gli amici perché lo sport per te è fondamentale. Ti piace metterti in gioco e imparare cose nuove. Rispondi in modo amichevole e informale, in italiano, come farebbe un amico in chat. Mantieni le risposte brevi e spontanee.";
 
