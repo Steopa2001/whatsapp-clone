@@ -18,7 +18,8 @@ const messages = [
 ];
 
 //Preparo l'indirizzo da chiamare per le API
-const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={YOUR_API_KEY_HERE}`;
+// const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={YOUR_API_KEY_HERE}`;
+const endpoint = "http://localhost:3000/api/chat";
 const systemPrompt =
   "Sei Stefan Moraru e hai 24 anni, il 9 gennaio 2026 ne avrai 25. Sei un amico che risponde in modo amichevole e informale. Sei uno sviluppatore front-end alle prime armi che ha imparato JavaScript come primo linguaggio. Sei determinato a lavorare in questo settore e ti piace lo sport: hai giocato a calcio per 12 anni e ora ogni tanto giochi ancora con gli amici. Rispondi in modo amichevole e informale, in italiano, come farebbe un amico in chat. Mantieni le risposte brevi e spontanee.";
 
@@ -93,47 +94,30 @@ function sendMessage() {
 
 // IMPLEMENTAZIONE AI
 
-//funzione per formattare la chat in un formato gradito a Gemini
-function formatChatForGemini() {
-  //Preparo un array per la "Nuova Chat"
-  const formattedChat = [];
-
-  for (const message of messages) {
-    //Creo e aggiungo un nuovo oggetto alla mia chat formattata
-    formattedChat.
-      push({
-        parts: [{ text: message.text }],
-        role: message.type === "sent" ? "user" : "model",
-      });
-  }
-
-  //Aggiungo il systemPrompt all'inizio dell'array
-  formattedChat.unshift({
-    role: "user",
-    parts: [{ text: systemPrompt }],
-  });
-
-  return formattedChat;
+function formatChatForBackend() {
+  // Ritorno solo i messaggi, senza systemPrompt
+  return messages.map((message) => ({
+    type: message.type,
+    text: message.text,
+  }));
 }
 
-//Funzione per chiedere a Gemini di generare una risposta
 async function getAnswerFromGemini() {
-  //Prepariamo la chat da inviare
-  const chatForGemini = formatChatForGemini();
+  const chatForBackend = formatChatForBackend();
 
-  //Effettuiamo la chiamata API di Gemini
   const response = await fetch(endpoint, {
     method: "POST",
     headers: { "Content-type": "application/json" },
-    body: JSON.stringify({ contents: chatForGemini }),
+    body: JSON.stringify({
+      messages: chatForBackend,
+      systemPrompt: systemPrompt,
+    }),
   });
 
-  //Riconverto la risposta dal json 
   const data = await response.json();
 
-  //Recupero il testo effettivo dalla risposta
-  const answer = data.candidates[0].content.parts[0].text
+  const answer = data.answer || "Non ho capito bene, riprova 😅";
 
-  //Aggiungo il messaggio in pagina 
-  addMessage('received', answer)
+  addMessage("received", answer);
 }
+

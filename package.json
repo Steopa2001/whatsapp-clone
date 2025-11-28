@@ -1,0 +1,27 @@
+{
+  "name": "whatsapp-clone",
+  "version": "1.0.0",
+  "description": "Ho sviluppato un clone di WhatsApp utilizzando HTML, CSS e JavaScript, integrando anche un sistema di intelligenza artificiale capace di generare risposte automatiche ai messaggi. Il progetto offre le principali funzionalità di una chat moderna, con un’interfaccia ispirata a WhatsApp Web. Presta particolare attenzione alla struttura, all’organizzazione del codice e all’esperienza utente, garantendo inoltre una webapp completamente responsive, perfetta per tutte le dimensioni di schermo. L’obiettivo è mostrare la capacità di creare applicazioni interattive lato front-end e di integrare tecnologie avanzate come l’AI all’interno di un flusso di messaggistica real-time.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Steopa2001/whatsapp-clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Steopa2001/whatsapp-clone/issues"
+  },
+  "homepage": "https://github.com/Steopa2001/whatsapp-clone#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "node-fetch": "^2.7.0"
+  }
+}
