@@ -115,8 +115,7 @@ async function getAnswerFromGemini() {
     }),
   });
 
-  const text = await response.text();        
-  console.log("RAW RESPONSE:", text);       
+  const text = await response.text();              
 
   let data;
   try {
