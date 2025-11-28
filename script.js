@@ -114,10 +114,20 @@ async function getAnswerFromGemini() {
     }),
   });
 
-  const data = await response.json();
+  const text = await response.text();        
+  console.log("RAW RESPONSE:", text);       
+
+  let data;
+  try {
+    data = JSON.parse(text);                 
+  } catch (e) {
+    console.error("JSON parse error:", e);
+    addMessage("received", "Errore lato server, riprova più tardi.");
+    return;
+  }
 
   const answer = data.answer || "Non ho capito bene, riprova 😅";
-
   addMessage("received", answer);
 }
+
 
