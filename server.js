@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.static("."));
 
 app.post("/api/chat", async (req, res) => {
+  console.log("RICHIESTA /api/chat ARRIVATA:", req.body);
   try {
     const userMessages = req.body.messages; // array di messaggi (testo)
     const systemPrompt = req.body.systemPrompt;
@@ -42,6 +43,7 @@ app.post("/api/chat", async (req, res) => {
     });
 
     const data = await response.json();
+    console.log("GEMINI RESPONSE:", JSON.stringify(data, null, 2));
 
     const answer =
       data.candidates?.[0]?.content?.parts?.[0]?.text ||
